@@ -8,22 +8,7 @@ public class UIManager : MonoBehaviour
 {
     static UIManager instance;
 
-    public TextMeshProUGUI characterNameText;
-    public TextMeshProUGUI levelValue;
-    public TextMeshProUGUI goldText;
-    public TextMeshProUGUI atkValue;
-    public TextMeshProUGUI defValue;
-    public TextMeshProUGUI hpValue;
-    public TextMeshProUGUI crtValue;
-
-    public GameObject mainUI;
-    public GameObject statusUI;
-    public GameObject inventoryUI;
-
-    
-   
-
-    
+                      
     public static UIManager Instance
     {
         get 
@@ -37,74 +22,21 @@ public class UIManager : MonoBehaviour
         instance = this;
     }
 
+    
+
     public void Start()
     {
+        InitUI();
+    }
+
+    public void InitUI()
+    {
         GameManager.Instance.SetData();
-        //OnClickMainUI();
-        UpdateUI();
+        MainUI.Instance.UpdateUI();
     }
 
-    public void UpdateUI()
+    public void BackToMainUI()
     {
-        var player = GameManager.Instance.Player;
-
-
-        if (characterNameText != null)
-        {
-            characterNameText.text = player.Name;
-            
-        }
-
-        if (levelValue != null)
-        { 
-            levelValue.text = player.Level.ToString();
-        }
-
-        if (goldText != null)
-        {
-            goldText.text = player.Gold.ToString();  
-        }
-
-        if (atkValue != null)
-        {
-            atkValue.text = player.Atk.ToString();
-        }
-
-        if (defValue != null)
-        {
-            defValue.text = player.Def.ToString();
-        }
-
-        if (hpValue != null)
-        {
-            hpValue.text = player.Hp.ToString();
-        }
-
-        if (crtValue != null)
-        {
-            crtValue.text = player.Crt.ToString();
-        }
+        MainUI.Instance.OnClickMainUI();
     }
-
-    public void OnClickMainUI()
-    {
-        mainUI.SetActive(true);
-        statusUI.SetActive(false);
-        inventoryUI.SetActive(false);
-    }
-
-    public void OnClickStatusUI()
-    {
-        mainUI.SetActive(false);
-        statusUI.SetActive(true);
-        inventoryUI.SetActive(false);
-    }
-
-    public void OnClickInventoryUI()
-    {
-        mainUI.SetActive(false);
-        statusUI.SetActive(false);
-        inventoryUI.SetActive(true);
-    }
-        
 }

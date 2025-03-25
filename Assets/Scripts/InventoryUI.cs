@@ -6,4 +6,11 @@ using UnityEngine.UI;
 public class InventoryUI : UIManager
 {
     public Button backBtn;
+
+    public void Start()
+    {
+        backBtn.onClick.AddListener(BackToMainUI);
+    }
+
+   
 }

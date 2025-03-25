@@ -25,8 +25,7 @@ public class GameManager : MonoBehaviour
 
     public void SetData()
     {
-        Player = new MyCharacterData("Rtan", 1, 5, 5, 100, 50, 50000);
+        Player = new MyCharacterData("Rtan", 10, 15, 10, 100, 50, 50000);
 
-        //UIManager.Instance.UpdateUI();
     }
 }
