@@ -11,6 +11,10 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI characterNameText;
     public TextMeshProUGUI levelValue;
     public TextMeshProUGUI goldText;
+    public TextMeshProUGUI atkValue;
+    public TextMeshProUGUI defValue;
+    public TextMeshProUGUI hpValue;
+    public TextMeshProUGUI crtValue;
 
     public GameObject mainUI;
     public GameObject statusUI;
@@ -19,7 +23,7 @@ public class UIManager : MonoBehaviour
     
    
 
-    public CharacterData characterData;
+    
     public static UIManager Instance
     {
         get 
@@ -28,29 +32,57 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    private void Awake()
+    {
+        instance = this;
+    }
+
     public void Start()
     {
-        characterData = new CharacterData("Rtan", 1, 1, 1, 1, 1, 50000);
+        GameManager.Instance.SetData();
+        //OnClickMainUI();
         UpdateUI();
-        OnClickMainUI();
     }
 
     public void UpdateUI()
     {
+        var player = GameManager.Instance.Player;
+
+
         if (characterNameText != null)
         {
-            characterNameText.text = characterData.Name;
-            Debug.Log(characterData.Name);
+            characterNameText.text = player.Name;
+            
         }
 
         if (levelValue != null)
         { 
-            levelValue.text = characterData.Level.ToString();
+            levelValue.text = player.Level.ToString();
         }
 
         if (goldText != null)
         {
-            goldText.text = characterData.Gold.ToString();  
+            goldText.text = player.Gold.ToString();  
+        }
+
+        if (atkValue != null)
+        {
+            atkValue.text = player.Atk.ToString();
+        }
+
+        if (defValue != null)
+        {
+            defValue.text = player.Def.ToString();
+        }
+
+        if (hpValue != null)
+        {
+            hpValue.text = player.Hp.ToString();
+        }
+
+        if (crtValue != null)
+        {
+            crtValue.text = player.Crt.ToString();
         }
     }
 
