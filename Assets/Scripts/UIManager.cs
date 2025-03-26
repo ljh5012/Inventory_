@@ -8,6 +8,7 @@ public class UIManager : MonoBehaviour
 {
     static UIManager instance;
 
+    public MainUI mainUI;
                       
     public static UIManager Instance
     {
@@ -26,17 +27,18 @@ public class UIManager : MonoBehaviour
 
     public void Start()
     {
+        mainUI = FindObjectOfType<MainUI>();
         InitUI();
     }
 
     public void InitUI()
     {
         GameManager.Instance.SetData();
-        MainUI.Instance.UpdateUI();
+        mainUI.UpdateUI();
     }
 
     public void BackToMainUI()
     {
-        MainUI.Instance.OnClickMainUI();
+        mainUI.OnClickMainUI();
     }
 }

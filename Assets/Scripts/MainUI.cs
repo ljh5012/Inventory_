@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class MainUI : MonoBehaviour
 {
-    public static MainUI Instance;
+   
 
     public Button statusBtn;
     public Button inventoryBtn;
@@ -19,11 +19,7 @@ public class MainUI : MonoBehaviour
     public GameObject statusUI;
     public GameObject inventoryUI;
 
-    public void Awake()
-    {
-        Instance = this;
-    }
-
+    
     
 
     public void UpdateUI()
